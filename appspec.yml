@@ -1,0 +1,16 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/works/www/demo
+    overwrite: yes
+permissions:
+  - object: /home/ubuntu/works/www/demo
+    owner: ubuntu
+    group: ubuntu
+    mode: 755
+hooks:
+  ApplicationStart:
+    - location: scripts/deploy.sh
+      timeout: 60
+      runas: ubuntu
