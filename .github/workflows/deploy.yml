@@ -1,11 +1,11 @@
 name: test
 
-#on:
-#  workflow_dispatch:
-
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
+
+#on:
+#  push:
+#    branches: [main]
 
 jobs:
   build-and-deploy:
