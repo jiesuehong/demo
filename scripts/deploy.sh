@@ -4,6 +4,7 @@ SOURCE_DIR="/home/ubuntu/works/www/demo"
 JAVA_SCRIPT="java -jar"
 #JAVA_SCRIPT="java -jar -Dspring.profiles.active=prod"
 SERVICE_NAME="demo-0.0.1-SNAPSHOT.jar"
+DEPLOY_LOG="/home/ubuntu/works/www/demo/deploy.log"
 
 echo "CURRENT DATE"
 echo $(date "+%F %T")
