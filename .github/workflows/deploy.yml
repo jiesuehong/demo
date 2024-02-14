@@ -1,5 +1,8 @@
 name: test
 
+#on:
+#  workflow_dispatch:
+
 on:
   push:
     branches: [main]
@@ -16,12 +19,8 @@ jobs:
 
       - name: Set ENVs
         run: |
-          echo "* ------------------------------------------------------------------------ *"
           echo "current_date=$(date +"%Y%m%d")" >> $GITHUB_ENV
-          echo "Current Date: $current_date" # 이 줄은 출력에 표시하기 위한 것이며 선택사항
           echo "PROJECT_NAME=DEMO_APP" >> $GITHUB_ENV
-          echo "PROJECT_NAME: $PROJECT_NAME"
-          echo "* ------------------------------------------------------------------------ *"
 
 
       - name: Set up JDK 11
@@ -38,7 +37,6 @@ jobs:
 
       - name: copy files
         run: |
-          echo "* ------------------------------------------------------------------------ *"
           if [ ! -d ./deploy ]; then
             mkdir ./deploy
           fi
@@ -48,7 +46,6 @@ jobs:
 
       - name: Zip Files
         run: |
-          echo "* ------------------------------------------------------------------------ *"
           zip -r "${PROJECT_NAME}_${current_date}.zip" ./deploy
 
       - name: Configure AWS credentials

@@ -13,6 +13,7 @@ echo "------------------------Before Run Script--------------------------------"
 echo "$(ps -ef | grep $SERVICE_NAME | grep java)"
 
 CURRENT_PID="$(ps -ef | grep $SERVICE_NAME | grep java)"
+ehco "$CURRENT_PID"
 
 if ![ -z $CURRENT_PID ]; then
   echo "$TIME_NOW > 실행중인 $CURRENT_PID 애플리케이션 종료 " >> $DEPLOY_LOG
