@@ -12,14 +12,19 @@ echo ""
 echo "------------------------Before Run Script--------------------------------"
 echo "$(ps -ef | grep $SERVICE_NAME | grep java)"
 
-sudo kill -9 $(pgrep -f "sudo nohup ${JAVA_SCRIPT} ./$SERVICE_NAME")
-sudo kill -9 $(pgrep -f "${JAVA_SCRIPT} ./$SERVICE_NAME")
-pushd "${SOURCE_DIR}nzeus/api" > /dev/null
+CURRENT_PID="$(ps -ef | grep $SERVICE_NAME | grep java)"
+
+if ![ -z $CURRENT_PID ]; then
+  echo "$TIME_NOW > 실행중인 $CURRENT_PID 애플리케이션 종료 " >> $DEPLOY_LOG
+  kill -9 $CURRENT_PID
+
+#sudo kill -9 $(pgrep -f "sudo nohup ${JAVA_SCRIPT} ./$SERVICE_NAME")
+#sudo kill -9 $(pgrep -f "${JAVA_SCRIPT} ./$SERVICE_NAME")
+fi
+pushd "${SOURCE_DIR}" > /dev/null
 echo -ne '\n' | sudo nohup ${JAVA_SCRIPT} ./$SERVICE_NAME >/dev/null 2>&1 &
-;;
-
-
 popd > /dev/null
+
 sleep 0.3
 echo ""
 echo ""

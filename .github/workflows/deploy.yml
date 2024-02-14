@@ -49,7 +49,7 @@ jobs:
       - name: Zip Files
         run: |
           echo "* ------------------------------------------------------------------------ *"
-          zip -r "$PROJECT_NAME_$current_date.zip" ./deploy
+          zip -r "${PROJECT_NAME}_${current_date.zip}" ./deploy
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
