@@ -16,7 +16,7 @@ echo "$(ps -ef | grep $SERVICE_NAME | grep java)" >> $DEPLOY_LOG
 CURRENT_PID="$(pgrep -f 'sudo nohup ${JAVA_SCRIPT} ./$SERVICE_NAME')"
 ehco "$CURRENT_PID"
 
-if ![ -z $CURRENT_PID ]; then
+if [ -z $CURRENT_PID ]; then
   echo "$TIME_NOW > 실행중인 $CURRENT_PID 애플리케이션 종료 " >> $DEPLOY_LOG
   sudo kill -9 $(pgrep -f "sudo nohup ${JAVA_SCRIPT} ./$SERVICE_NAME")
   sudo kill -9 $(pgrep -f "${JAVA_SCRIPT} ./$SERVICE_NAME")
