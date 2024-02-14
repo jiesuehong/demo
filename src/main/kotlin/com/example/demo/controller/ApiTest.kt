@@ -11,6 +11,6 @@ class ApiTest {
 
     @GetMapping("/test")
     fun test(): ResponseEntity<Any> {
-        return ResponseEntity("test ok", HttpStatus.OK)
+        return ResponseEntity("test ok plus", HttpStatus.OK)
     }
 }
