@@ -39,6 +39,9 @@ jobs:
       - name: copy files
         run: |
           echo "* ------------------------------------------------------------------------ *"
+          if [ ! -d ./deploy ]; then
+            mkdir ./deploy
+          fi
           cp ./build/libs/*.jar ./deploy
           cp appspec.yml ./deploy
           cp -r scripts/ ./deploy
